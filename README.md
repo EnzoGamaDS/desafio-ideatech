@@ -11,8 +11,6 @@
 Projeto em desenvolvimento
 
 - [ ] Responsividade
-- [ ] CRUD de console
-- [ ] Estilização
 - [ ] Testes unitários
 
 ## 💻 Pré-requisitos
