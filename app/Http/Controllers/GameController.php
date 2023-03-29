@@ -61,13 +61,8 @@ class GameController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['image'] = strval($profileImage);
         }
-        $game = new Game();
-        $game = $game->create($input);
+        $game = Game::create($input);
 
-        dd($request->console);
-        // foreach ($request->console as $) {
-        //     # code...
-        // }
         $console = Console::find($request->console);
         $console->games()->sync([$game->id]);
 
