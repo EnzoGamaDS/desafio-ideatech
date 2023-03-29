@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Console;
 use App\Models\Game;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,11 @@ class GameController extends Controller
      */
     public function create()
     {
-        return view('games.create');
+        $consoles = Console::all();
+        $data = [
+            'consoles' => $consoles,
+        ];
+        return view('games.create', $data);
     }
     /**
      * Store a newly created game in storage.
@@ -57,7 +62,14 @@ class GameController extends Controller
             $input['image'] = strval($profileImage);
         }
         $game = new Game();
-        $game->create($input);
+        $game = $game->create($input);
+
+        dd($request->console);
+        // foreach ($request->console as $) {
+        //     # code...
+        // }
+        $console = Console::find($request->console);
+        $console->games()->sync([$game->id]);
 
         return redirect()->route('games.index')->with('success', 'Jogo cadastrado com sucesso!');
     }

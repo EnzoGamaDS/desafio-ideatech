@@ -59,13 +59,11 @@
         </div>
         <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
-                <strong>Tipo do console:</strong>
-                <select name="console" id="" class="form-control" placeholder="Tipo do console">
-                    <option value=""></option>
-                    <option value="xbox">xbox</option>
-                    <option value="xbox-one">xbox-one</option>
-                    <option value="PS4">PS4</option>
-                    <option value="PS5">PS5</option>
+                <strong>Tipo do console:</strong> <br>
+                <select name="console" id="" class="form-control" placeholder="Tipo do console" multiple>
+                    @foreach ($consoles as $console)
+                    <option value="{{$console->id}}">{{$console->name}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>

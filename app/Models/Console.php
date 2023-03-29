@@ -17,8 +17,8 @@ class Console extends Model
         'manufacturer'
     ];
 
-    public function Games()
+    public function games()
     {
-        return $this->belongsToMany(Game::class,  'game_console', 'game_id', 'console_id');
+        return $this->belongsToMany(Game::class, 'game_console');
     }
 }
