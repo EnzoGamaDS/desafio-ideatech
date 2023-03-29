@@ -28,7 +28,7 @@
         @yield('content')
     </section>
 </body>
-<footer class="bg-success sticky-bottom p-3">
+<footer class="bg-success static-bottom p-3">
     <div class="col-md-12 text-center mt-4">
         <p>Avaliação realizado por Enzo Gama dos Santos.</p>
         <a href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a>
