@@ -3,10 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Console;
+use App\Services\ConsoleService;
 use Illuminate\Http\Request;
 
 class ConsoleContoller extends Controller
 {
+    private $consoleService;
+
+    public function __construct()
+    {
+        $this->consoleService = new ConsoleService();
+    }
+
     /**
      * Show the list of Consoles with pagination.
      *
@@ -14,12 +22,7 @@ class ConsoleContoller extends Controller
      */
     public function index()
     {
-        $consoles = Console::latest()->simplePaginate(5);
-        $data = [
-            'consoles' => $consoles,
-        ];
-
-        return view('consoles.index', $data);
+        return view('consoles.index', $this->consoleService->listConsoles());
     }
 
     /**
@@ -39,13 +42,7 @@ class ConsoleContoller extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'manufacturer' => 'required',
-        ]);
-
-        Console::create($request->all());
+        $this->consoleService->storeConsole($request);
 
         return redirect()->route('consoles.index')->with('success', 'Console cadastrado com sucesso!');
     }
@@ -76,19 +73,12 @@ class ConsoleContoller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Console  $console
+     * @param   $console
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Console $console)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required',
-            'manufacturer' => 'required'
-        ]);
-
-        $console->update($request->all());
-
+        $this->consoleService->updateConsole($request, $console);
         return redirect()->route('consoles.index')
             ->with('success', 'Console atualizado com sucesso !!!');
     }
@@ -101,8 +91,7 @@ class ConsoleContoller extends Controller
      */
     public function destroy(Console $console)
     {
-        $console->delete();
-
+        $this->consoleService->deleteConsole($console);
         return redirect()->route('consoles.index')
             ->with('success', 'Console deletado com sucesso !!!');
     }
