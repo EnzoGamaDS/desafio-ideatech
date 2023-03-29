@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ConsoleContoller;
 use App\Http\Controllers\GameController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::resource('games', GameController::class);
+Route::resource('consoles', ConsoleContoller::class);
 
 Route::get('/', function () {
     return view('welcome');

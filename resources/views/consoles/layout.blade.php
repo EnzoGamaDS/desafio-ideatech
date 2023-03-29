@@ -18,7 +18,7 @@
     <div class="px-3 pb-2">
         <a class="text-decoration-none text-light" href="/games">Home</a> |
         <a class="text-decoration-none text-light" href="/games">Jogos</a> |
-        <a class="text-decoration-none text-light" href="/consoles">Consoles</a>
+        <a class="text-decoration-none text-light" href="/games">Consoles</a>
     </div>
 </header>
 
@@ -28,7 +28,7 @@
         @yield('content')
     </section>
 </body>
-<footer class="bg-success sticky-bottom p-3">
+<footer class="bg-success fixed-bottom p-3">
     <div class="col-md-12 text-center mt-4">
         <p>Avaliação realizado por Enzo Gama dos Santos.</p>
         <a href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a>
