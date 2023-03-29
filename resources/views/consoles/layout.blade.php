@@ -11,7 +11,7 @@
     </script>
 </head>
 
-<header class="bg-success">
+<header class="bg-info">
     <div class="px-3 py-3">
         <h2 class="text-light">Ideatech - Projeto de Games</h2>
     </div>
@@ -28,7 +28,7 @@
         @yield('content')
     </section>
 </body>
-<footer class="bg-success fixed-bottom p-3">
+<footer class="bg-info fixed-bottom p-3">
     <div class="col-md-12 text-center mt-4">
         <p>Avaliação realizado por Enzo Gama dos Santos.</p>
         <a href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a>
