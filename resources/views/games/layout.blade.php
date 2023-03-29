@@ -31,8 +31,8 @@
 <footer class="bg-success static-bottom p-3">
     <div class="col-md-12 text-center mt-4">
         <p>Avaliação realizado por Enzo Gama dos Santos.</p>
-        <a href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a>
-        <a href="https://www.linkedin.com/in/enzo-gama-15b203212/">Perfil no linkedin.</a>
+        <a class="text-decoration-none text-light" href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a> <br>
+        <a class="text-decoration-none text-light" href="https://www.linkedin.com/in/enzo-gama-15b203212/">Perfil no linkedin.</a>
     </div>
 </footer>
 
