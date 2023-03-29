@@ -45,6 +45,7 @@ class GameController extends Controller
             'image' => 'required|mimetypes:image/*|max:2048',
             'manufacturer' => 'required',
             'launch' => 'required',
+            'console' => 'required'
         ]);
 
         $input = $request->except('image');
@@ -55,8 +56,8 @@ class GameController extends Controller
             $image->move($destinationPath, $profileImage);
             $input['image'] = strval($profileImage);
         }
-
-        Game::create($input);
+        $game = new Game();
+        $game->create($input);
 
         return redirect()->route('games.index')->with('success', 'Jogo cadastrado com sucesso!');
     }

@@ -27,40 +27,46 @@
     @csrf
 
     <div class="row">
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Nome:</strong>
                 <input type="text" name="name" class="form-control" placeholder="Nome">
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Descrição:</strong>
                 <textarea class="form-control" style="height:150px" name="description" placeholder="Descrição"></textarea>
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Imagem:</strong>
                 <input type="file" name="image" class="form-control" placeholder="imagem">
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Fabricante:</strong>
                 <input type="text" name="manufacturer" class="form-control" placeholder="Fabricante">
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Qual o ano do lançamento:</strong>
                 <input type="date" name="launch" class="form-control" placeholder="Ano do lancamento">
             </div>
         </div>
-        <div class="col-xs-12 col-md-12">
+        <div class="col-xs-12 col-md-12 mt-3">
             <div class="form-group">
                 <strong>Tipo do console:</strong>
-                <input type="text" name="console" class="form-control" placeholder="Tipo do console">
+                <select name="console" id="" class="form-control" placeholder="Tipo do console">
+                    <option value=""></option>
+                    <option value="xbox">xbox</option>
+                    <option value="xbox-one">xbox-one</option>
+                    <option value="PS4">PS4</option>
+                    <option value="PS5">PS5</option>
+                </select>
             </div>
         </div>
         <div class="col-md-12 text-center my-5">

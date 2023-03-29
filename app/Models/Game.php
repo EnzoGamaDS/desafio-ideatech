@@ -19,8 +19,8 @@ class Game extends Model
         'launch',
     ];
 
-    public function Console()
+    public function console()
     {
-        return $this->hasMany(Console::class, 'game_console', 'game_id', 'console_id');
+        return $this->belongsToMany(Console::class, 'game_console', 'console_id', 'game_id');
     }
 }

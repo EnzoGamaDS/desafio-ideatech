@@ -55,4 +55,4 @@ Suba o servidor localmente
 php artisan serve
 ````
  
- Abra http://localhost:8000/games no seu navegador favorito para ver o sistema funcionado.
+ Abra http://127.0.0.1:8000/games no seu navegador favorito para ver o sistema funcionado.

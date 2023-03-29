@@ -31,6 +31,7 @@
 <footer class="bg-success sticky-bottom p-3">
     <div class="col-md-12 text-center mt-4">
         <p>Teste realizado por Enzo Gama dos Santos.</p>
+        <a href="https://github.com/EnzoGamaDS/desafio-ideatech" target="_blank">Repositório do projeto.</a>
     </div>
 </footer>
 
