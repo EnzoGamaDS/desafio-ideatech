@@ -40,9 +40,10 @@ class GameService
         }
         $game = Game::create($input);
 
-        $console = Console::find($request->console);
-        $console->games()->sync([$game->id]);
-
+        foreach ($request->console as $console_id) {
+            $console = Console::find($console_id);
+            $console->games()->attach([$game->id]);
+        }
         return $game;
     }
 

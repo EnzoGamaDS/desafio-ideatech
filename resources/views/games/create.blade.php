@@ -57,16 +57,16 @@
                 <input type="date" name="launch" class="form-control" placeholder="Ano do lancamento">
             </div>
         </div>
-        <div class="col-xs-12 col-md-12 mt-3">
-            <div class="form-group">
-                <strong>Tipo do console:</strong> <br>
-                <select name="console" id="" class="form-control" placeholder="Tipo do console" multiple>
-                    @foreach ($consoles as $console)
-                    <option value="{{$console->id}}">{{$console->name}}</option>
-                    @endforeach
-                </select>
+        <div class="col-xs-12 mt-3">
+            <strong>Tipo do console:</strong> <br>
+            @foreach ($consoles as $console)
+            <div class="checkbox-container" key="{{$console->id}}">
+                <input type="checkbox" name="console[]" value="{{$console->id}}">
+                <span>{{$console->name}}</span>
             </div>
+            @endforeach
         </div>
+        <p id="txt"></p>
         <div class="col-md-12 text-center my-5">
             <button type="submit" class="btn btn-primary col-md-2"> Cadastrar </button>
         </div>

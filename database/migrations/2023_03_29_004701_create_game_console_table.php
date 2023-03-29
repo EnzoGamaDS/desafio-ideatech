@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('game_console', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('game_id');
-            $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('game_id')->references('id')->on('games')->onDelete('cascade');
             $table->unsignedBigInteger('console_id');
-            $table->foreign('console_id')->references('id')->on('consoles')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('console_id')->references('id')->on('consoles')->onDelete('cascade');
             $table->timestamps();
         });
     }
