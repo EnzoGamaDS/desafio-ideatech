@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Console;
 use App\Models\Game;
+use App\Services\GameService;
 use Illuminate\Http\Request;
 
 class GameController extends Controller
 {
+    private $gameService;
+
+    public function __construct()
+    {
+        $this->gameService = new GameService();
+    }
 
     /**
      * Show the list of games with pagination.
@@ -16,12 +22,7 @@ class GameController extends Controller
      */
     public function index()
     {
-        $games = Game::latest()->simplePaginate(5);
-        $data = [
-            'games' => $games,
-        ];
-
-        return view('games.index', $data);
+        return view('games.index', $this->gameService->listGames());
     }
 
     /**
@@ -31,11 +32,7 @@ class GameController extends Controller
      */
     public function create()
     {
-        $consoles = Console::all();
-        $data = [
-            'consoles' => $consoles,
-        ];
-        return view('games.create', $data);
+        return view('games.create', $this->gameService->createGame());
     }
     /**
      * Store a newly created game in storage.
@@ -45,27 +42,7 @@ class GameController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'image' => 'required|mimetypes:image/*|max:2048',
-            'manufacturer' => 'required',
-            'launch' => 'required',
-            'console' => 'required'
-        ]);
-
-        $input = $request->except('image');
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'image/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = strval($profileImage);
-        }
-        $game = Game::create($input);
-
-        $console = Console::find($request->console);
-        $console->games()->sync([$game->id]);
-
+        $this->gameService->storeGame($request);
         return redirect()->route('games.index')->with('success', 'Jogo cadastrado com sucesso!');
     }
 
@@ -95,28 +72,12 @@ class GameController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Game  $game
+     * @param  $game
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Game $game)
     {
-        $request->validate([
-            'name' => 'required',
-            'description' => 'required'
-        ]);
-
-        $input = $request->all();
-
-        if ($image = $request->file('image')) {
-            $destinationPath = 'image/';
-            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
-            $image->move($destinationPath, $profileImage);
-            $input['image'] = "$profileImage";
-        } else {
-            unset($input['image']);
-        }
-
-        $game->update($input);
+        $this->gameService->updateGame($request, $game);
 
         return redirect()->route('games.index')
             ->with('success', 'Jogo atualizado com sucesso !!!');
@@ -130,7 +91,7 @@ class GameController extends Controller
      */
     public function destroy(Game $game)
     {
-        $game->delete();
+        $this->gameService->deleteGame($game);
 
         return redirect()->route('games.index')
             ->with('success', 'Jogo deletado com sucesso !!!');
