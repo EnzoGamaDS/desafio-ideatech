@@ -37,6 +37,15 @@
             {{ date( 'd/m/Y' , strtotime( $game->launch ) ); }}
         </div>
     </div>
+
+    <div class="col-xs-12 mb-2 mt-3">
+        <div class="form-group">
+            <strong>Consoles suportados: </strong>
+            @foreach ($console_id as $console)
+            | {{ $console->name }} |
+            @endforeach
+        </div>
+    </div>
     <div class="col-xs-12 mb-2 mt-3">
         <div class="form-group">
             <strong>Imagem: </strong>

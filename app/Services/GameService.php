@@ -14,6 +14,11 @@ class GameService
         return ['games' => $games];
     }
 
+    public function showGames(Game $game)
+    {
+        return $game->consoles;
+    }
+
     public function createGame()
     {
         $consoles = Console::all();

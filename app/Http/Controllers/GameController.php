@@ -49,12 +49,13 @@ class GameController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Game  $game
+     * @param   $game
      * @return \Illuminate\Http\Response
      */
     public function show(Game $game)
     {
-        return view('games.show', compact('game'));
+        $console_id =  $this->gameService->showGames($game);
+        return view('games.show', compact('game', 'console_id'));
     }
 
     /**
